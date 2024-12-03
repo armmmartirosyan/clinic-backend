@@ -11,5 +11,9 @@ namespace Clinic.Data
         public DbSet<ProcedureImages> ProcedureImages { get; set; }
         public DbSet<ProcedureNames> ProcedureNames { get; set; }
         public DbSet<Procedures> Procedures { get; set; }
+        public DbSet<Registrations> Registrations { get; set; }
+        public DbSet<WeekDaySchedule> WeekDaySchedule {  get; set; }
+        public DbSet<NotWorkingDays> NotWorkingDays { get; set; }
+        public DbSet<MedicinesAssigned> MedicinesAssigned { get; set; }
     }
 }

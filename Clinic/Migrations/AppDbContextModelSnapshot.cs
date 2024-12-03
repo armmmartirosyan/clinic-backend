@@ -61,6 +61,61 @@ namespace Clinic.Migrations
                     b.ToTable("Dentists");
                 });
 
+            modelBuilder.Entity("Clinic.Models.MedicinesAssigned", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<sbyte>("DayCount")
+                        .HasColumnType("TINYINT")
+                        .HasColumnName("day_count");
+
+                    b.Property<string>("Dose")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(10)")
+                        .HasColumnName("dose");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(50)")
+                        .HasColumnName("name");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(255)")
+                        .HasColumnName("notes");
+
+                    b.Property<sbyte>("Quantity")
+                        .HasColumnType("TINYINT")
+                        .HasColumnName("quantity");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("DATE")
+                        .HasColumnName("start_date");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("medicines_assigned");
+                });
+
+            modelBuilder.Entity("Clinic.Models.NotWorkingDays", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("DATE")
+                        .HasColumnName("date");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("not_wordking_days");
+                });
+
             modelBuilder.Entity("Clinic.Models.Patients", b =>
                 {
                     b.Property<int>("Id")
@@ -121,7 +176,7 @@ namespace Clinic.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProcedureImages");
+                    b.ToTable("procedure_images");
                 });
 
             modelBuilder.Entity("Clinic.Models.ProcedureNames", b =>
@@ -138,7 +193,7 @@ namespace Clinic.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProcedureNames");
+                    b.ToTable("procedure_names");
                 });
 
             modelBuilder.Entity("Clinic.Models.Procedures", b =>
@@ -172,6 +227,75 @@ namespace Clinic.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Procedures");
+                });
+
+            modelBuilder.Entity("Clinic.Models.Registrations", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<TimeSpan>("CallingTime")
+                        .HasColumnType("TIME")
+                        .HasColumnName("calling_time");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("DATE")
+                        .HasColumnName("date");
+
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("TIME")
+                        .HasColumnName("end_time");
+
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("VARCHAR(255)")
+                        .HasColumnName("notes");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("TIME")
+                        .HasColumnName("start_time");
+
+                    b.Property<sbyte>("Status")
+                        .HasColumnType("TINYINT")
+                        .HasColumnName("status");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Registrations");
+                });
+
+            modelBuilder.Entity("Clinic.Models.WeekDaySchedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    b.Property<TimeSpan>("BreakEndTime")
+                        .HasColumnType("TIME")
+                        .HasColumnName("break_end_time");
+
+                    b.Property<TimeSpan>("BreakStartTime")
+                        .HasColumnType("TIME")
+                        .HasColumnName("break_start_time");
+
+                    b.Property<sbyte>("DayOfWeek")
+                        .HasColumnType("TINYINT")
+                        .HasColumnName("day_of_week");
+
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("TIME")
+                        .HasColumnName("end_time");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("TIME")
+                        .HasColumnName("start_time");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("week_day_schedule");
                 });
 #pragma warning restore 612, 618
         }

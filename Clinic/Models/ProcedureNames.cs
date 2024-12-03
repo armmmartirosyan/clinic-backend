@@ -1,5 +1,6 @@
 ﻿namespace Clinic.Models
 {
+    [Table("procedure_names")]
     public class ProcedureNames
     {
         [Column("id")]
