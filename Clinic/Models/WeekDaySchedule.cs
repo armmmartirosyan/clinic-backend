@@ -32,6 +32,7 @@
         [Column("day_of_week", TypeName = "TINYINT")]
         public required WeekDays DayOfWeek { get; set; }
 
-        //	dentist_id(INT, Foreign Key, relates to Dentists.id)
+        [Column("dentist")]
+        public required Dentists Dentist { get; set; }
     }
 }

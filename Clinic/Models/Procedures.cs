@@ -20,9 +20,11 @@
         [Column("price", TypeName = "Decimal(10,2)")]
         public required Decimal Price { get; set; }
 
+        [Column("dentist")]
+        public required Dentists Dentist { get; set; }
+
         //name (VARCHAR(50))
         //patient_id(INT, Foreign Key, relates to Patients.id)
-        //dentist_id(INT, Foreign Key, relates to Dentists.id)
         //images(One to many, relates to Procedure Images table)
         //medicines taken
     }

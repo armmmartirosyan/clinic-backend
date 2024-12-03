@@ -23,10 +23,19 @@
         [Column("password", TypeName = "CHAR(32)")]
         public required string Password { get; set; }
 
-        //specialization(ENUM: Specialty of the dentist, e.g., orthodontist, endodontist)
-        //week_day_schedule(One to many, relates to Week Day Schedule table)
-        //not_working_days(One to many, relates to Not Working Days table)
-        //registrations(Many to many, relates to Registrations table)
-        //procedures(Many to many, relates to Procedures table)
+        [Column("week_day_schedule")]
+        public required ICollection<WeekDaySchedule> WeekDaySchedule { get; set; }
+
+        [Column("not_working_days")]
+        public required ICollection<NotWorkingDays> NotWorkingDays { get; set; }
+
+        [Column("registrations")]
+        public required ICollection<Registrations> Registrations { get; set; }
+
+        [Column("procedures")]
+        public required ICollection<Procedures> Procedures { get; set; }
+
+        [Column("specialization")]
+        public required Specializations Specialization { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Clinic.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Clinic.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241203221325_dentistsRel")]
+    partial class dentistsRel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,12 +59,7 @@ namespace Clinic.Migrations
                         .HasColumnType("VARCHAR(20)")
                         .HasColumnName("phone");
 
-                    b.Property<int>("SpecializationId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SpecializationId");
 
                     b.ToTable("Dentists");
                 });
@@ -286,23 +284,6 @@ namespace Clinic.Migrations
                     b.ToTable("Registrations");
                 });
 
-            modelBuilder.Entity("Clinic.Models.Specializations", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("id");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(50)")
-                        .HasColumnName("name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Specializations");
-                });
-
             modelBuilder.Entity("Clinic.Models.WeekDaySchedule", b =>
                 {
                     b.Property<int>("Id")
@@ -338,17 +319,6 @@ namespace Clinic.Migrations
                     b.HasIndex("DentistId");
 
                     b.ToTable("week_day_schedule");
-                });
-
-            modelBuilder.Entity("Clinic.Models.Dentists", b =>
-                {
-                    b.HasOne("Clinic.Models.Specializations", "Specialization")
-                        .WithMany()
-                        .HasForeignKey("SpecializationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Specialization");
                 });
 
             modelBuilder.Entity("Clinic.Models.NotWorkingDays", b =>

@@ -30,7 +30,9 @@
         [Column("status", TypeName = "TINYINT")]
         public required Status Status { get; set; }
 
+        [Column("dentist")]
+        public required Dentists Dentist { get; set; }
+
         //	patient_id (INT, Foreign Key, relates to Patients.id)
-        //	dentist_id(INT, Foreign Key, relates to Dentists.id)
     }
 }

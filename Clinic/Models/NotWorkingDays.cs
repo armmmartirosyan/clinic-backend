@@ -9,6 +9,7 @@
         [Column("date", TypeName = "DATE")]
         public required DateTime Date { get; set; }
 
-        //dentist_id (INT, Foreign Key, relates to Dentists.id)
+        [Column("dentist")]
+        public required Dentists Dentist { get; set; }
     }
 }
